@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Nova Knights | Players</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="nav-left">
+        <div class="logo"><img src="assets/logo.png" alt="logo"></div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="players.html" class="active">Players</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="stats.html">Stats</a></li>
+          <li><a href="fanzone.html">Fan Zone</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <button class="hamburger">☰</button>
+    </div>
+  </header>
+
+  <main class="container players-section">
+    <div class="filter-bar">
+      <button class="filter-btn" data-role="all">All</button>
+      <button class="filter-btn" data-role="batsman">Batsman</button>
+      <button class="filter-btn" data-role="bowler">Bowler</button>
+      <button class="filter-btn" data-role="allrounder">All-Rounder</button>
+      <input class="search-box" placeholder="Search by name..." />
+    </div>
+
+    <div class="players-grid">
+      <div class="player-card" data-role="batsman">
+        <img src="assets/players/player1.jpg" alt="Player 1">
+        <h3>Arjun Sen</h3>
+        <div class="player-meta">Role: Batsman • Runs: 540</div>
+      </div>
+
+      <div class="player-card" data-role="bowler">
+        <img src="assets/players/player2.jpg" alt="Player 2">
+        <h3>Rahul V</h3>
+        <div class="player-meta">Role: Bowler • Wkts: 22</div>
+      </div>
+
+      <div class="player-card" data-role="allrounder">
+        <img src="assets/players/player3.jpg" alt="Player 3">
+        <h3>Samir K</h3>
+        <div class="player-meta">Role: All-Rounder • Runs: 320, Wkts: 10</div>
+      </div>
+
+      <div class="player-card" data-role="batsman">
+        <img src="assets/players/player4.jpg" alt="Player 4">
+        <h3>Vikram P</h3>
+        <div class="player-meta">Role: Batsman • Runs: 412</div>
+      </div>
+
+      <div class="player-card" data-role="bowler">
+        <img src="assets/players/player5.jpg" alt="Player 5">
+        <h3>Karan J</h3>
+        <div class="player-meta">Role: Bowler • Wkts: 18</div>
+      </div>
+
+      <div class="player-card" data-role="allrounder">
+        <img src="assets/players/player6.jpg" alt="Player 6">
+        <h3>Deven R</h3>
+        <div class="player-meta">Role: All-Rounder • Runs: 280, Wkts: 14</div>
+      </div>
+
+      
+    </div>
+  </main>
+
+  <!-- Player modal -->
+  <div class="modal-bg">
+    <div class="modal">
+      <button class="close-btn" title="close">✕</button>
+      <img class="player-img" src="" alt="player"/>
+      <h3 class="m-player-name" style="margin-top:12px"></h3>
+      <div class="m-player-meta" style="color:var(--muted);margin-top:8px"></div>
+    </div>
+  </div>
+
+  <footer>© 2025 Nova Knights. All Rights Reserved.</footer>
+  <script src="js/script.js"></script>
+</body>
+</html>

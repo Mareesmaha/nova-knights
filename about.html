@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Nova Knights | About</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ===== CONTACT SUCCESS POPUP STYLES ===== */
+    #contactSuccessOverlay {
+      display: none; /* hidden by default */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .contact-popup {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .contact-popup h2 {
+      margin-bottom: 12px;
+      color: #0b1740;
+    }
+
+    .contact-popup p.quote {
+      font-style: italic;
+      margin: 12px 0;
+      color: #555;
+    }
+
+    .contact-popup button {
+      margin-top: 12px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #0b1740;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .contact-popup button:hover {
+      background: #14266e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="nav-left">
+        <div class="logo"><img src="assets/logo.png" alt="logo"></div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="players.html">Players</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="stats.html">Stats</a></li>
+          <li><a href="fanzone.html">Fan Zone</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+        </ul>
+      </div>
+      <button class="hamburger">☰</button>
+    </div>
+  </header>
+
+  <main class="container" style="margin-top:28px">
+    <div class="about-card">
+      <h2 style="color:#0b1740">About Nova Knights</h2>
+      <p style="margin-top:10px;line-height:1.6">
+        At Nova Knights, every run, catch, and victory echoes our hunger to be better than yesterday.
+        We are a team shaped by passion, sharpened by challenges, and driven by fearless ambition.
+        This platform celebrates our players, our fans, and the relentless energy that keeps the Knights charging forward.
+      </p>
+
+      <h3 style="margin-top:18px">Contact Us</h3>
+      <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
+        <input id="contact-name" class="search-box" placeholder="Your name" style="flex:1;min-width:220px">
+        <input id="contact-email" class="search-box" placeholder="Your email" style="flex:1;min-width:220px">
+      </div>
+      <textarea id="contact-msg" placeholder="Message..." style="width:100%;height:120px;margin-top:12px;padding:12px;border-radius:8px;border:1px solid #ddd"></textarea>
+      <button id="contact-submit" class="poll-btn" style="margin-top:12px">Send Message</button>
+    </div>
+  </main>
+
+  <footer>© 2025 Nova Knights. All Rights Reserved</footer>
+
+  <!-- CONTACT SUCCESS POPUP -->
+  <div id="contactSuccessOverlay">
+    <div class="contact-popup">
+      <h2>Message Sent! 🎉</h2>
+      <p class="quote">"Every champion was once a beginner — thanks for reaching out!"</p>
+      <button id="closeContactPopup">Awesome!</button>
+    </div>
+  </div>
+
+  <!-- JS Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactSubmit = document.getElementById('contact-submit');
+      const contactOverlay = document.getElementById('contactSuccessOverlay');
+      const closePopup = document.getElementById('closeContactPopup');
+
+      // Hide popup initially
+      contactOverlay.style.display = 'none';
+
+      contactSubmit.addEventListener('click', (e) => {
+        e.preventDefault(); // prevent default button behavior
+
+        const name = document.getElementById('contact-name').value.trim();
+        const email = document.getElementById('contact-email').value.trim();
+        const msg = document.getElementById('contact-msg').value.trim();
+
+        if (!name || !email || !msg) {
+          alert("Please fill in all fields.");
+          return;
+        }
+
+        // Show popup only if all fields are filled
+        contactOverlay.style.display = 'flex';
+
+        // Clear inputs
+        document.getElementById('contact-name').value = '';
+        document.getElementById('contact-email').value = '';
+        document.getElementById('contact-msg').value = '';
+      });
+
+      closePopup.addEventListener('click', () => {
+        contactOverlay.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>

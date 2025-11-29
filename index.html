@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Nova Knights | Home</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ===== POPUP STYLES ===== */
+    .popup-overlay{
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content:center;
+      align-items:center;
+      z-index: 9999;
+    }
+    .popup-box{
+      background:#fff;
+      padding:25px;
+      width:320px;
+      border-radius:10px;
+      text-align:center;
+    }
+    .popup-box input{
+      width:100%;
+      padding:10px;
+      margin:8px 0;
+      border:1px solid #ccc;
+      border-radius:6px;
+    }
+    .popup-box button{
+      padding:10px 20px;
+      background: var(--secondary);
+      border:none;
+      color:#fff;
+      border-radius:6px;
+      cursor:pointer;
+      margin-top:10px;
+    }
+    .popup-close{
+      float:right;
+      cursor:pointer;
+      font-size:18px;
+      font-weight:bold;
+      margin-top:-10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <div class="navbar">
+      <div class="nav-left">
+        <div class="logo"><img src="assets/logo.png" alt="Nova Knights logo"></div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="players.html">Players</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="stats.html">Stats</a></li>
+          <li><a href="fanzone.html">Fan Zone</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <button class="hamburger" aria-label="menu">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO / BANNER SECTION -->
+  <section class="hero">
+    <div class="hero-inner">
+      <img class="team-banner" src="assets/images/banner.jpg" alt="Nova Knights Banner">
+      <h1>Welcome to <span style="color:var(--secondary);">Nova Knights</span> Fan Zone</h1>
+      <p>Follow the knights — live updates, player stats, schedule and fan activities.</p>
+      <a class="cta-btn" href="players.html">Meet the Players</a>
+
+      <div class="feature-buttons">
+        <a class="btn" href="players.html">Players</a>
+        <a class="btn" href="schedule.html">Schedule</a>
+        <a class="btn" href="fanzone.html">Fan Zone</a>
+      </div>
+
+      <div class="countdown-box" style="margin-top:22px;">
+        Next match starts in: <span id="countdown" data-target="2025-12-02T19:30:00">Loading...</span>
+      </div>
+
+      <!-- Button to open popup -->
+     <button class="main-btn" id="openPopup">Nova Alert</button>
+
+
+    </div>
+  </section>
+
+  <div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <button class="close-btn" id="closePopup">✕</button>
+
+    <h2>Join Nova Knights Fan Club</h2>
+
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <button class="submit-btn" id="submitBtn">Submit</button>
+  </div>
+</div>
+
+
+  <!-- LATEST MATCH HIGHLIGHTS -->
+  <section class="container slider">
+    <div class="title">Latest Match Highlights</div>
+    <div class="slider-track">
+      <div class="slide"><img src="assets/images/highlight1.jpg" alt="highlight1"></div>
+      <div class="slide"><img src="assets/images/highlight2.jpg" alt="highlight2"></div>
+      <div class="slide"><img src="assets/images/highlight3.jpg" alt="highlight3"></div>
+    </div>
+    <button class="slider-btn left">❮</button>
+    <button class="slider-btn right">❯</button>
+  </section>
+
+  <footer>© 2025 Nova Knights. All Rights Reserved.</footer>
+
+  <script src="js/script.js"></script>
+
+  <script>
+    /* ============ POPUP OPEN / CLOSE ============ */
+    const openPopup = document.getElementById("openPopup");
+    const closePopup = document.getElementById("closePopup");
+    const popupOverlay = document.getElementById("popupOverlay");
+
+    openPopup.addEventListener("click", () => {
+      popupOverlay.style.display = "flex";
+    });
+
+    closePopup.addEventListener("click", () => {
+      popupOverlay.style.display = "none";
+    });
+
+    /* Close when clicking outside the popup */
+    window.addEventListener("click", (e) => {
+      if (e.target === popupOverlay) popupOverlay.style.display = "none";
+    });
+
+    /* ============ FORM VALIDATION ============ */
+    const form = document.getElementById("popupForm");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+
+    form.addEventListener("submit", function (e) {
+      let isValid = true;
+
+      // Name validation
+      const nameValue = nameInput.value.trim();
+      const namePattern = /^[A-Za-z ]+$/;
+
+      if (nameValue === "" || !namePattern.test(nameValue)) {
+        alert("Please enter a valid name (letters only).");
+        isValid = false;
+      }
+
+      // Email validation
+      const emailValue = emailInput.value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailPattern.test(emailValue)) {
+        alert("Please enter a valid email.");
+        isValid = false;
+      }
+
+      if (!isValid) e.preventDefault();
+    });
+  </script>
+
+<!-- SUCCESS POPUP -->
+<div id="successPopup">
+  <div class="success-box">
+    <div class="success-title">🎉 You're In!</div>
+    <div class="success-msg">Thank you for joining the Nova Knights Fan Zone!</div>
+    <button class="success-btn" onclick="closeSuccessPopup()">Awesome!</button>
+  </div>
+</div>
+
+
+</body>
+</html>
